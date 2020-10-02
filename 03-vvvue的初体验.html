@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+
+        vue 的基础功能模块, 其实就是一个稍大的模型引擎
+
+     -->
+
+    <div id="app">
+        <h1>{{msg}}</h1>
+    </div>
+</body>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: "#app",
+        data: {
+            msg: "hello vue",
+        },
+    });
+</script>
+
+<!-- vue 初体验： 
+ 1. npm i vue
+ 2. 引包
+ 3. 创建vue实例
+    const vm = new Vue ({
+        el:'选择器 '，
+        data: {
+            msg :'内容'
+        }   
+     })
+ -->
+
+</html>

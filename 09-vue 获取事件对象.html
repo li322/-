@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+
+        阻止默认行为 e.preventDefault()
+        阻止冒泡 e.stopPropagation()
+        vue 中获取事件对象
+        1. 注册事件没有传参 @事件名 = 'fn' , 直接通过形参，即可获得
+        2. 注册事件传参了  @事件名='fn(参数，$event)',需要通过$event获取到e
+
+
+     -->
+    <div id="app">
+        <div @click="fatherFn">
+            <a @click.stop.prevent="fn2(100)" href="http://www.baidu.com">a2</a>
+        </div>
+        <a @click="fn1(100,$event)" href="http://www.baidu.com">a1</a>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        // const vm = new Vue({
+        //     el: "#app",
+        //     data: {
+        //         msg: "hello vue",
+        //     },
+        //     methods: {
+        //         fn1(e) {
+        //             e.preventDefault();
+        //         },
+        //         fn2(str, e) {
+        //             e.preventDefault();
+        //             console.log(str);
+        //         },
+        //     },
+        // });
+
+        // vue中提供了事件修饰符， 可以非常方便的阻止默认行为， 阻止冒泡
+        // .stop 阻止冒泡
+        // .prevent 阻止默认行为
+        // const vm = new Vue({
+        //     el: "#app",
+        //     data: {
+        //         msg: "hello vue",
+        //     },
+        //     methods: {
+        //         fn1(number, e) {
+        //             e.preventDefault();
+        //         },
+        //         fn2(number) {
+        //             console.log(number);
+        //             alert("我是子盒子, 我被点击了");
+        //         },
+        //         fatherFn() {
+        //             alert("我是父盒子, 我的点击事件执行了");
+        //         },
+        //     },
+        // });
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "hello vue",
+            },
+            methods: {
+                fn1(number, e) {
+                    e.preventDefault();
+                },
+                fn2(number) {
+                    console.log(number);
+                    alert("我是子盒子");
+                },
+                fatherFn() {
+                    alert("我是父盒子");
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>
